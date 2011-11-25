@@ -4,3 +4,6 @@
 [submodule "framework/lib/jugglingdb"]
 	path = framework/lib/jugglingdb
 	url = https://github.com/1602/jugglingdb.git
+[submodule "framework/lib/ejs"]
+	path = framework/lib/ejs
+	url = https://github.com/visionmedia/ejs.git
