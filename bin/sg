@@ -1,0 +1,3 @@
+#!/usr/bin/env node
+
+// Command line tool for generating scaffolding implementation and other such tasks
