@@ -29,7 +29,7 @@ Sgood.ClassLoader = {load: function (classes) {
 	_.forEach(classes, function (c) {
 		var ptr = Sgood;
 		var pieces = c.split('.');
-		var path = process.cwd() + '/lib/sgood/' + c.replace('.', '/').toLowerCase() + '.js';
+		var path = './lib/sgood/' + c.replace('.', '/').toLowerCase() + '.js';
 
 		for (var i = 0; i < pieces.length; i++) {
 			var bitName = pieces[i];
