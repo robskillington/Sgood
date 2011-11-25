@@ -1,0 +1,6 @@
+[submodule "framework/lib/underscore"]
+	path = framework/lib/underscore
+	url = https://github.com/documentcloud/underscore.git
+[submodule "framework/lib/jugglingdb"]
+	path = framework/lib/jugglingdb
+	url = https://github.com/1602/jugglingdb.git
