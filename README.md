@@ -1,12 +1,8 @@
 ## About
 
-Sgood is a lightweight rapid development MVC framework for NodeJS.  It leverages JugglingDB for ORM, EJS 
-ejs for view script templating and Underscorejs for common utility additions.
+Sgood is a lightweight rapid development MVC framework for NodeJS.  It leverages JugglingDB for ORM, ejs for view script templating and Underscorejs for common utility additions.
 
-Its aim is to provide a thin but well structured platform to build high performance and scalable websites 
-in NodeJS quickly.  It is designed in such a manner to allow developers to use as much or as little of it 
-as necessary and also to be able to quickly make small changes to allow the framework to function in 
-such a way that fits their needs.
+Its aim is to provide a thin but well structured platform to build high performance and scalable websites in NodeJS quickly.  It is designed in such a manner to allow developers to use as much or as little of it as necessary and also to be able to quickly make small changes to allow the framework to function in such a way that fits their needs.
 
 ## Libraries leveraged
 
