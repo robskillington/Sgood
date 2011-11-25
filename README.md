@@ -25,7 +25,7 @@ Its aim is to provide a thin but well structured platform to build high performa
 + Easy distributable caching components, leveraging memcache and/or custom cache
 + Localization support
 + Database schema migrations support
-+ Libraries/framework for interop with cloud services such as Amazon, Azure, Google App Engine, etc
++ Libraries/framework for interop with cloud services such as Amazon Web Services, Windows Azure, Google App Engine, etc
 
 ## License
 
