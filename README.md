@@ -15,6 +15,9 @@ Its aim is to provide a thin but well structured platform to build high performa
 + Underscore https://github.com/documentcloud/underscore
   MIT License https://github.com/documentcloud/underscore/blob/master/LICENSE
 
++ jQuery https://github.com/jquery/jquery
+  MIT License https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt
+
 + Bootstrap https://github.com/twitter/bootstrap
   Apache License 2.0 https://github.com/twitter/bootstrap/blob/master/LICENSE
 
