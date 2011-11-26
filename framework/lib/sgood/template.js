@@ -1,5 +1,5 @@
 
-var ejs = require('./lib/ejs/ejs.js');
+var ejs = require(process.cwd() + '/lib/ejs/lib/ejs.js');
 var fs = require('fs');
 
 Sgood = (global.Sgood) ? global.Sgood : Sgood;

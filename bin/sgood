@@ -1,3 +1,74 @@
 #!/usr/bin/env node
 
-// Command line tool for generating scaffolding implementation and other such tasks
+var module = require('module');
+
+// Preface
+var version = require('../framework/version.js').version;
+console.log('');
+console.log('[Sgood v' + (new version()) + ']: bootstrap');
+console.log('');
+
+// General purpose libs
+global._ = require('../framework/lib/underscore/underscore.js');
+
+/**
+ * Application
+ */
+
+// Namespace
+Sgood = global.Sgood = new Object();
+Sgood.Version = version;
+
+// Loader
+Sgood.ClassLoader = {load: function (classes) {
+	_.forEach(classes, function (c) {
+		var ptr = Sgood;
+		var pieces = c.split('.');
+		var path = '../framework/lib/sgood/' + c.replace(/_/g, '/').toLowerCase() + '.js';
+
+		for (var i = 0; i < pieces.length; i++) {
+			var bitName = pieces[i];
+			ptr[bitName] = new Object();
+			ptr = ptr[bitName];
+		}
+
+		// Import the class instance definition
+		ptr = require(path).Class;
+	});
+}};
+
+// Inheritance
+Sgood.Inherit = function (classDef, constructorArgs) {
+	var self = this;
+
+	constructorArgs = (!constructorArgs) 
+		? undefined : constructorArgs;
+
+	var classInstance = new classDef(constructorArgs);
+
+	_.forEach(classInstance, function (prop, key) {
+		self[key] = prop;
+	});
+
+	_.forEach(classDef.prototype, function (prop, key) {
+		self[key] = prop;
+	});
+};
+
+// Load application classes
+Sgood.ClassLoader.load([
+	'Const',
+	'Console',
+	'Exception',
+	'Registry',
+	'Str',
+	'Tool',
+	'Tool_Action',
+	'Tool_Action_New',
+	'Tool_Action_Help'
+]);
+
+// Run tool
+var args = process.argv.slice(2);
+var tool = new Sgood.Tool(args);
+tool.run();

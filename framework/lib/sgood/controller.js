@@ -31,27 +31,27 @@ Sgood.Controller.prototype.invokeAction = function (actionName, request, respons
 	}
 
 	var requestHandle = new Sgood.RequestHandle(
-		this, activeAction, request, response
+		this, actionName, request, response
 	);
 
 	var actionMethod = this[actionMethodName];
 
-	actionMethod.call(this, this, requestHandle);
+	actionMethod.call(this, requestHandle);
 };
 
 Sgood.Controller.prototype.render = function (reqh, data, layout) {
-	if (!this.activeAction) {
+	if (!reqh.activeAction) {
 		throw new Sgood.Exception(503, 'Sgood.Controller.render: no active action');
 	}
 
-	var template = this.templates[this.activeAction] = 
-		(!this.templates[this.activeAction]) 
+	var template = this.templates[reqh.activeAction] = 
+		(!this.templates[reqh.activeAction]) 
 			? new Sgood.Template(
 				Sgood.Config.viewsDirectory + '/' + 
 				this.controllerName + '/' +
-				this.activeAction + Sgood.Const.EXT_TEMPLATE
+				reqh.activeAction + Sgood.Const.EXT_TEMPLATE
 			)
-			: this.templates[this.activeAction];
+			: this.templates[reqh.activeAction];
 
 	reqh.response.writeHead(200, { 'Content-Type': 'text/html' });
 

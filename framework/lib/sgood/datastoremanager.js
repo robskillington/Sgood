@@ -23,7 +23,7 @@ Sgood.DataStoreManager = exports.Class = function (modelSchemaFile, modelScaffol
 		if (!fs.statSync(modelScaffoldFile).isFile()) {
 			throw new Sgood.Exception(
 				503, 'Sgood.DataStoreManager.__constructor: modelScaffoldFile does not exist'
-			);			
+			);
 		}
 
 		// Load scaffolding

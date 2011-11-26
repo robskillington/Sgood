@@ -31,9 +31,9 @@ Sgood.Application.prototype.run = function () {
 };
 
 Sgood.Application.prototype.handleRequest = function (request, response) {
-	try {
+	//try {
 		this.dispatcher.dispatch(request, response);
-	} catch (exception) {
+	/*} catch (exception) {
 		if (Sgood.Config.catchExceptions) {
 			if (exception instanceof Sgood.Exception) {
 				response.writeHead(exception.code, { 'Content-Type': 'text/html' });
@@ -45,5 +45,5 @@ Sgood.Application.prototype.handleRequest = function (request, response) {
 		} else {
 			throw exception;
 		}
-	}
+	}*/
 };

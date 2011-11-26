@@ -1,13 +1,9 @@
 
 // Preface
-var version = function () {
-	this.value = '0.1.0';
-};
-version.prototype.toString = function () {
-	return this.value;	
-};
-
-console.log('[Sgood v' + (new version()) + ']: boot');
+var version = require('./version.js').version;
+console.log('');
+console.log('[Sgood v' + (new version()) + ']: bootstrap');
+console.log('');
 
 /**
  * Imports
@@ -29,7 +25,7 @@ Sgood.ClassLoader = {load: function (classes) {
 	_.forEach(classes, function (c) {
 		var ptr = Sgood;
 		var pieces = c.split('.');
-		var path = './lib/sgood/' + c.replace('.', '/').toLowerCase() + '.js';
+		var path = './lib/sgood/' + c.replace(/\./g, '/').toLowerCase() + '.js';
 
 		for (var i = 0; i < pieces.length; i++) {
 			var bitName = pieces[i];
@@ -48,7 +44,6 @@ Sgood.ClassLoader.load([
 
 	// Include classes of the framework you want
 	'Application',
-	'Config',
 	'Console',
 	'Controller',
 	'DataStoreManager',
@@ -59,6 +54,9 @@ Sgood.ClassLoader.load([
 	'Str',
 	'Template'
 ]);
+
+// Require application specific config
+Sgood.Config = require('./app/config.js').Class;
 
 // Run application
 var app = new Sgood.Application();

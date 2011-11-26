@@ -4,7 +4,7 @@ Sgood = (global.Sgood) ? global.Sgood : Sgood;
 // Singleton
 Sgood.Config = exports.Class = {
 	// Binding for http server
-	bindPort: 80,
+	bindPort: 8080,
 	bindIp: '127.0.0.1',
 
 	// Debugging
@@ -25,7 +25,7 @@ Sgood.Config = exports.Class = {
 	useModelScaffolding: true,
 	modelScaffolding: Sgood.Const.APP_PATH + 'models/scaffold.js',
 	jugglingDbConf: {
-		// Use in memory for now
+		// Use in memory for development
 		adapter: 'memory'
 	}
 };
