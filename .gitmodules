@@ -7,3 +7,6 @@
 [submodule "framework/lib/ejs"]
 	path = framework/lib/ejs
 	url = https://github.com/visionmedia/ejs.git
+[submodule "framework/lib/bootstrap"]
+	path = framework/lib/bootstrap
+	url = https://github.com/twitter/bootstrap
