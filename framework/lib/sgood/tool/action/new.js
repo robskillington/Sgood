@@ -23,9 +23,9 @@ Sgood.Tool_Action_New.prototype.run = function (name) {
 
 	this.copyFrameworkFile('run.js', name + '/run.js');
 
-	fs.mkdirSync(name + '/public');
+	this.copyTemplateFile('new/public/css/bootstrap.min.css', name + '/public/css/bootstrap.min.css');
+	this.copyTemplateFile('new/public/js/jquery.min.js', name + '/public/js/jquery.min.js');
 
-	console.log('');
 	console.log(' project "' + name + '" created successfully');
 	console.log('');
 };

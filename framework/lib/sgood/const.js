@@ -16,11 +16,10 @@ var baseDir = (function () {
 })();
 
 Sgood.Const = exports.Class = {
-	APP_PATH: process.cwd() + '/app/',
+	APP_PATH: process.cwd() + '/app',
+	PUBLIC_PATH: process.cwd() + '/public',
 	EXT_TEMPLATE: '.ejs',
 	FRAMEWORK_BASE_PATH: baseDir + '/framework',
 	CODEGEN_TEMPLATE_PATH: baseDir + '/templates',
-	LIB_PATH: baseDir + '/framework/lib',
-
-
+	LIB_PATH: baseDir + '/framework/lib'
 };

@@ -18,32 +18,14 @@ Sgood.Application = exports.Class = function () {
 };
 
 Sgood.Application.prototype.run = function () {	
-	var self = this;
+	var dispatcher = this.dispatcher;
 	
 	http.createServer(function (request, response) {
-		self.handleRequest(request, response);
+		dispatcher.dispatch(request, response);
 	}).listen(Sgood.Config.bindPort, Sgood.Config.bindIp);
 
 	Sgood.Console.println(
 		'Sgood.Application: http server created and bound to ' + 
 		Sgood.Config.bindIp + ':' + Sgood.Config.bindPort
 	);
-};
-
-Sgood.Application.prototype.handleRequest = function (request, response) {
-	try {
-		this.dispatcher.dispatch(request, response);
-	} catch (exception) {
-		if (Sgood.Config.catchExceptions) {
-			if (exception instanceof Sgood.Exception) {
-				response.writeHead(exception.code, { 'Content-Type': 'text/html' });
-				response.end('<!DOCTYPE html><html><head><title>Error</title></head><body>' + exception.message + '</body></html>');
-			} else {
-				response.writeHead(503, { 'Content-Type': 'text/html' });
-				response.end('<!DOCTYPE html><html><head><title>Error</title></head><body>' + exception.toString() + '</body></html>');			
-			}
-		} else {
-			throw exception;
-		}
-	}
 };

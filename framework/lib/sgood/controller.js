@@ -27,21 +27,25 @@ Sgood.Controller.prototype.invokeAction = function (actionName, request, respons
 	var actionMethodName = actionName + 'Action';
 
 	if (!_.isFunction(this[actionMethodName])) {
-		throw new Sgood.Exception(404, 'Sgood.Controller.invokeAction: ' + actionMethodName + ' action method not found');
+		Sgood.Error(request, response, new Sgood.Exception(
+			404, 'Sgood.Controller.invokeAction: ' + actionMethodName + ' action method not found'
+		));
+	} else {
+		var requestHandle = new Sgood.RequestHandle(
+			this, actionName, request, response
+		);
+
+		var actionMethod = this[actionMethodName];
+
+		actionMethod.call(this, requestHandle);
 	}
-
-	var requestHandle = new Sgood.RequestHandle(
-		this, actionName, request, response
-	);
-
-	var actionMethod = this[actionMethodName];
-
-	actionMethod.call(this, requestHandle);
 };
 
 Sgood.Controller.prototype.render = function (reqh, data, layout) {
 	if (!reqh.activeAction) {
-		throw new Sgood.Exception(503, 'Sgood.Controller.render: no active action');
+		return Sgood.Error(reqh.request, reqh.response, new Sgood.Exception(
+			503, 'Sgood.Controller.render: no active action'
+		));
 	}
 
 	var template = this.templates[reqh.activeAction] = 
@@ -64,7 +68,9 @@ Sgood.Controller.prototype.render = function (reqh, data, layout) {
 			);
 		} else {
 			if (!this.defaultLayout || this.defaultLayout.length < 1) {
-				throw new Sgood.Exception(503, 'Asking to render with layout but no default layout specified');
+				return Sgood.Error(reqh.request, reqh.response, new Sgood.Exception(
+					503, 'Asking to render with layout but no default layout specified'
+				));
 			}
 
 			layout = this.defaultLayoutTemplate = (!this.defaultLayoutTemplate)
