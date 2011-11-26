@@ -4,7 +4,7 @@ var fs = require('fs');
 Sgood = (global.Sgood) ? global.Sgood : Sgood;
 
 Sgood.Tool_Action_New = exports.Class = function () {
-	Sgood.Inherit.call(this, Sgood.Tool_Action);
+	Sgood.Mixin.call(this, Sgood.Tool_Action);
 };
 
 Sgood.Tool_Action_New.prototype.run = function (name) {
@@ -22,7 +22,6 @@ Sgood.Tool_Action_New.prototype.run = function (name) {
 	fs.symlinkSync(Sgood.Const.LIB_PATH, name + '/lib');
 
 	this.copyFrameworkFile('run.js', name + '/run.js');
-	this.copyFrameworkFile('version.js', name + '/version.js');
 
 	console.log('');
 	console.log(' project "' + name + '" created successfully');

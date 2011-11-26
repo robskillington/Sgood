@@ -1,8 +1,10 @@
+/**
+ * Preface
+ */
 
-// Preface
-var version = require('./version.js').version;
+var version = require('./lib/sgood/assemblyinfo.js').AssemblyInfo.version;
 console.log('');
-console.log('[Sgood v' + (new version()) + ']: bootstrap');
+console.log('[Sgood v' + version + ']: bootstrap');
 console.log('');
 
 /**
@@ -21,24 +23,14 @@ Sgood = global.Sgood = new Object();
 Sgood.Version = version;
 
 // Loader
-Sgood.ClassLoader = {load: function (classes) {
-	_.forEach(classes, function (c) {
-		var ptr = Sgood;
-		var pieces = c.split('.');
-		var path = './lib/sgood/' + c.replace(/\./g, '/').toLowerCase() + '.js';
+Sgood.ClassLoader = require('./lib/sgood/classloader.js').Class;
 
-		for (var i = 0; i < pieces.length; i++) {
-			var bitName = pieces[i];
-			ptr[bitName] = new Object();
-			ptr = ptr[bitName];
-		}
-
-		ptr = require(path).Class;
-	});
-}};
+// Mixin helper
+Sgood.Mixin = require('./lib/sgood/mixin.js').Func;
 
 // Load application classes
-Sgood.ClassLoader.load([
+var classLoader = new Sgood.ClassLoader();
+classLoader.load([
 	// Always first
 	'Const',
 

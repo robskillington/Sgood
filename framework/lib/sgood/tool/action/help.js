@@ -2,7 +2,7 @@
 Sgood = (global.Sgood) ? global.Sgood : Sgood;
 
 Sgood.Tool_Action_Help = exports.Class = function () {
-	Sgood.Inherit.call(this, Sgood.Tool_Action);
+	Sgood.Mixin.call(this, Sgood.Tool_Action);
 };
 
 Sgood.Tool_Action_Help.prototype.run = function (cmd) {
@@ -53,9 +53,9 @@ Sgood.Tool_Action_Help.prototype.runHelp = function () {
 	console.log('');
 	console.log(' Usage: sgood run');
 	console.log('');
-	console.log(' Description: Must be run from top level directory of');
-	console.log('   proj_path, will run project on the inbuilt Sgood');
-	console.log('   development server.');
+	console.log(' Description: Not implemented.  In future will run an');
+	console.log('   instance of the application that reloads on file');
+	console.log('   updates.');
 	console.log('');
 };
 
