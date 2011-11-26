@@ -6,9 +6,17 @@ Its aim is to provide a thin but well structured platform to build high performa
 
 ## Libraries leveraged
 
-+ JugglingDB: MIT Licensed https://github.com/1602/jugglingdb
-+ ejs: MIT Licensed https://github.com/visionmedia/ejs
-+ Underscore: MIT Licensed https://github.com/documentcloud/underscore
++ JugglingDB https://github.com/1602/jugglingdb
+  MIT License https://github.com/1602/jugglingdb/blob/master/README.md
+
++ ejs https://github.com/visionmedia/ejs
+  MIT License https://github.com/visionmedia/ejs/blob/master/Readme.md
+
++ Underscore https://github.com/documentcloud/underscore
+  MIT License https://github.com/documentcloud/underscore/blob/master/LICENSE
+
++ Bootstrap https://github.com/twitter/bootstrap
+  Apache License 2.0 https://github.com/twitter/bootstrap/blob/master/LICENSE
 
 ## Roadmap
 

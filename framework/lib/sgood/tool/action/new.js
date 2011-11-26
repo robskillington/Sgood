@@ -23,6 +23,8 @@ Sgood.Tool_Action_New.prototype.run = function (name) {
 
 	this.copyFrameworkFile('run.js', name + '/run.js');
 
+	fs.mkdirSync(name + '/public');
+
 	console.log('');
 	console.log(' project "' + name + '" created successfully');
 	console.log('');
