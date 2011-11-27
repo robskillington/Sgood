@@ -7,6 +7,9 @@ Sgood.Config = exports.Class = {
 	bindPort: 8080,
 	bindIp: '127.0.0.1',
 
+	// Caching
+	cacheTemplates: false,
+
 	// Directories
 	controllersDirectory: Sgood.Const.APP_PATH + '/controllers',
 	viewsDirectory: Sgood.Const.APP_PATH + '/views',

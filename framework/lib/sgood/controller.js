@@ -49,7 +49,7 @@ Sgood.Controller.prototype.render = function (reqh, data, layout) {
 	}
 
 	var template = this.templates[reqh.activeAction] = 
-		(!this.templates[reqh.activeAction]) 
+		(!this.templates[reqh.activeAction] || !Sgood.Config.cacheTemplates) 
 			? new Sgood.Template(
 				Sgood.Config.viewsDirectory + '/' + 
 				this.controllerName + '/' +
@@ -73,9 +73,10 @@ Sgood.Controller.prototype.render = function (reqh, data, layout) {
 				));
 			}
 
-			layout = this.defaultLayoutTemplate = (!this.defaultLayoutTemplate)
-				? new Sgood.Template(this.defaultLayout)
-				: this.defaultLayoutTemplate;
+			layout = this.defaultLayoutTemplate = 
+				(!this.defaultLayoutTemplate || !Sgood.Config.cacheTemplates)
+					? new Sgood.Template(this.defaultLayout)
+					: this.defaultLayoutTemplate;
 		}
 
 		var layoutData = {
