@@ -29,7 +29,6 @@ Its aim is to provide a thin but well structured platform to build high performa
 
 ### Features:
 
-+ Support for serving static files; e.g. CSS, Javascript, images, etc
 + Commandline tool for generating basic CRUD controllers, models and views
 + Support for easily launching multiple worker processes serving up content on the same port
 + Support for easily load balancing Sgood server nodes
