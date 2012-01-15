@@ -8,6 +8,8 @@ Sgood.Tool_Action_New = exports.Class = function () {
 };
 
 Sgood.Tool_Action_New.prototype.run = function (name) {
+	var errorsOcurred = false;
+
 	if (!name) {
 		throw new Sgood.Exception('Sgood.Tool_Action_New.run: no name for new project specified');
 	}
@@ -19,13 +21,27 @@ Sgood.Tool_Action_New.prototype.run = function (name) {
 	this.copyTemplateFile('new/views/index/index.ejs', name + '/app/views/index/index.ejs');
 	this.copyTemplateFile('new/config.js', name + '/app/config.js');
 
-	fs.symlinkSync(Sgood.Const.LIB_PATH, name + '/lib');
-
 	this.copyFrameworkFile('run.js', name + '/run.js');
 
 	this.copyTemplateFile('new/public/css/bootstrap.min.css', name + '/public/css/bootstrap.min.css');
 	this.copyTemplateFile('new/public/js/jquery.min.js', name + '/public/js/jquery.min.js');
 
-	console.log(' project "' + name + '" created successfully');
+	var symlinkTarget = name + '/lib';
+
+	try {
+		fs.symlinkSync(Sgood.Const.LIB_PATH, name + '/lib');
+	} catch (err) {
+		console.log(' error: symlink failed "' + 
+			Sgood.Const.LIB_PATH  + ' " ' +
+			'<-> "' + symlinkTarget + '"');
+		errorsOcurred = true;
+	}
+	
+	if (errorsOcurred) {
+		console.log(' project "' + name + '" creation failed to complete successfully');
+	} else {
+		console.log(' project "' + name + '" created successfully');
+	}
+	
 	console.log('');
 };
